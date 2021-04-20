@@ -27,28 +27,28 @@ class FolderController: UITableViewController {
             navigationItem.title = "All notes"
         }
     }
-//    @IBAction func addNote(_ sender: UIBarButtonItem) {
-//        let alertActionNote = UIAlertController(title: "Create new note", message: "Create", preferredStyle: UIAlertController.Style.alert)
-//        alertActionNote.addTextField { (text) in
-//            text.placeholder = "Note name"
-//        }
-//        let alertAcnionAdd = UIAlertAction(title: "Create", style: UIAlertAction.Style.default) { (alert) in
-//            let noteName = alertActionNote.textFields?[0].text
-//            if noteName != nil {
-//                _ = Note.newNote(name: noteName!)
-//                CoreDataManager.sharedInstance.saveContext()
-//                self.tableView.reloadData()
-//            }
-//
-//        }
-//        let alertActionСancel = UIAlertAction(title: "Сancel", style: UIAlertAction.Style.default) { (alert) in
-//         }
-//
-//        alertActionNote.addAction(alertAcnionAdd)
-//        alertActionNote.addAction(alertActionСancel)
-//        present(alertActionNote, animated: true, completion: nil)
-//
-//    }
+    @IBAction func addNote(_ sender: UIBarButtonItem) {
+        let alertActionNote = UIAlertController(title: "Create new note", message: "Create", preferredStyle: UIAlertController.Style.alert)
+        alertActionNote.addTextField { (text) in
+            text.placeholder = "Note name"
+        }
+        let alertAcnionAdd = UIAlertAction(title: "Create", style: UIAlertAction.Style.default) { (alert) in
+            let noteName = alertActionNote.textFields?[0].text
+            if noteName != nil {
+                _ = Note.newNote(name: noteName!)
+                CoreDataManager.sharedInstance.saveContext()
+                self.tableView.reloadData()
+            }
+
+        }
+        let alertActionСancel = UIAlertAction(title: "Сancel", style: UIAlertAction.Style.default) { (alert) in
+         }
+
+        alertActionNote.addAction(alertAcnionAdd)
+        alertActionNote.addAction(alertActionСancel)
+        present(alertActionNote, animated: true, completion: nil)
+
+    }
     
 
     // MARK: - Table view data source

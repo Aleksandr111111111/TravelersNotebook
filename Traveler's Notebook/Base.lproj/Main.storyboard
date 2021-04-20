@@ -313,11 +313,17 @@
                             <outlet property="delegate" destination="Vg5-ar-XQ9" id="DPH-hv-Cvr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notes" id="ESb-bC-H3s"/>
+                    <navigationItem key="navigationItem" title="Notes" id="ESb-bC-H3s">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kwh-eY-3dC">
+                            <connections>
+                                <action selector="addNote:" destination="Vg5-ar-XQ9" id="7Vi-T4-R2A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ag5-oz-I0U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="816" y="82"/>
+            <point key="canvasLocation" x="1013" y="88"/>
         </scene>
         <!--Map-->
         <scene sceneID="3Ns-jU-ovD">

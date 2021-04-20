@@ -16,18 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        print(CoreDataManager.sharedInstance.persistentContainer.persistentStoreDescriptions)
-        let nf = Folder.newFolder(name: "asa")
-        nf.addNote().name = "yx"
-        nf.addNote().name = "ops"
-        nf.addNote().name = "BBBB"
-        nf.addNote().name = "QQQQQQQ"
-        
-        print(folder.count)
-        print(folder[0].name!)
-
-        _ = Folder.newFolder(name: "huyvei")
-        CoreDataManager.sharedInstance.saveContext()
+//        print(CoreDataManager.sharedInstance.persistentContainer.persistentStoreDescriptions)
+//        let nf = Folder.newFolder(name: "asa")
+//        nf.addNote().name = "yx"
+//        nf.addNote().name = "ops"
+//        nf.addNote().name = "BBBB"
+//        nf.addNote().name = "QQQQQQQ"
+//
+//        print(folder.count)
+//        print(folder[0].name!)
+//
+//        _ = Folder.newFolder(name: "huyvei")
+//        CoreDataManager.sharedInstance.saveContext()
         return true
     }
 
