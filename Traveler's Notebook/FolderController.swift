@@ -1,42 +1,56 @@
 //
-//  FoldersController.swift
+//  FolderController.swift
 //  Traveler's Notebook
 //
-//  Created by Aleksander Kulikov on 14.04.2021.
+//  Created by Aleksander Kulikov on 20.04.2021.
 //
 
 import UIKit
 
-class FoldersController: UITableViewController {
+class FolderController: UITableViewController {
+    
+    var folder: Folder?
+    var notesActual: [Note] {
+        if let folder = folder {
+            return folder.notesSorted
+        } else {
+            return notes
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
 
-    @IBAction func peshAddAction(_ sender: UIButton) {
-        let alertAction = UIAlertController(title: "Create new folder", message: "Create", preferredStyle: UIAlertController.Style.alert)
-        alertAction.addTextField { (text) in
-            text.placeholder = "Folder name"
+        if let folder = folder {
+            navigationItem.title = folder.name
+        } else {
+            navigationItem.title = "All notes"
         }
-        let alertAcnionAdd = UIAlertAction(title: "Create", style: UIAlertAction.Style.default) { (alert) in
-            let folderName = alertAction.textFields?[0].text
-            if folderName != nil {
-                _ = Folder.newFolder(name: folderName!)
-                CoreDataManager.sharedInstance.saveContext()
-                self.tableView.reloadData()
-            }
-            
-        }
-        let alertActionСancel = UIAlertAction(title: "Сancel", style: UIAlertAction.Style.default) { (alert) in
-         }
-        
-        alertAction.addAction(alertAcnionAdd)
-        alertAction.addAction(alertActionСancel)
-        present(alertAction, animated: true, completion: nil)
-        
-        // tableView.reloadData()
     }
+//    @IBAction func addNote(_ sender: UIBarButtonItem) {
+//        let alertActionNote = UIAlertController(title: "Create new note", message: "Create", preferredStyle: UIAlertController.Style.alert)
+//        alertActionNote.addTextField { (text) in
+//            text.placeholder = "Note name"
+//        }
+//        let alertAcnionAdd = UIAlertAction(title: "Create", style: UIAlertAction.Style.default) { (alert) in
+//            let noteName = alertActionNote.textFields?[0].text
+//            if noteName != nil {
+//                _ = Note.newNote(name: noteName!)
+//                CoreDataManager.sharedInstance.saveContext()
+//                self.tableView.reloadData()
+//            }
+//
+//        }
+//        let alertActionСancel = UIAlertAction(title: "Сancel", style: UIAlertAction.Style.default) { (alert) in
+//         }
+//
+//        alertActionNote.addAction(alertAcnionAdd)
+//        alertActionNote.addAction(alertActionСancel)
+//        present(alertActionNote, animated: true, completion: nil)
+//
+//    }
+    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,14 +60,16 @@ class FoldersController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return folder.count
+        return notesActual.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "foldersCell", for: indexPath)
-        let folderInCell = folder[indexPath.row]
-        cell.textLabel?.text = folderInCell.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellNote", for: indexPath)
+        let noteInCell = notesActual[indexPath.row]
+        
+        cell.textLabel?.text = noteInCell.name
+        cell.detailTextLabel?.text = noteInCell.dateUpdatedString
 
         // Configure the cell...
 
@@ -61,16 +77,6 @@ class FoldersController: UITableViewController {
     }
     
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToFolder", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToFolder" {
-            let selectedFolder = folder[tableView.indexPathForSelectedRow!.row]
-            (segue.destination as! FolderController).folder = selectedFolder
-        }
-    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -79,15 +85,15 @@ class FoldersController: UITableViewController {
     }
     */
 
-    
+  
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let folderInCell = folder[indexPath.row]
+            let noteInCell = (folder?.notesSorted[indexPath.row])!
             
-            CoreDataManager.sharedInstance.managedObjecContext.delete(folderInCell)
-            CoreDataManager.sharedInstance.saveContext() 
+            CoreDataManager.sharedInstance.managedObjecContext.delete(noteInCell)
+            CoreDataManager.sharedInstance.saveContext()
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -112,7 +118,8 @@ class FoldersController: UITableViewController {
     */
 
     /*
-    
+    // MARK: - Navigation
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

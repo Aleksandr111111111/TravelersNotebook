@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7277B60262ECE760005661B /* FolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7277B5F262ECE760005661B /* FolderController.swift */; };
 		C75DA0EE261C766200619991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DA0ED261C766200619991 /* AppDelegate.swift */; };
 		C75DA0F0261C766200619991 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DA0EF261C766200619991 /* SceneDelegate.swift */; };
 		C75DA0F5261C766200619991 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C75DA0F3261C766200619991 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C7277B5F262ECE760005661B /* FolderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderController.swift; sourceTree = "<group>"; };
 		C75DA0EA261C766200619991 /* Traveler's Notebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Traveler's Notebook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C75DA0ED261C766200619991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C75DA0EF261C766200619991 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				C75DA0ED261C766200619991 /* AppDelegate.swift */,
 				C75DA0EF261C766200619991 /* SceneDelegate.swift */,
 				C7FEF667262762960085A825 /* FoldersController.swift */,
+				C7277B5F262ECE760005661B /* FolderController.swift */,
 				C75DA0F3261C766200619991 /* Main.storyboard */,
 				C75DA0F9261C767600619991 /* Assets.xcassets */,
 				C75DA0FB261C767600619991 /* LaunchScreen.storyboard */,
@@ -178,6 +181,7 @@
 				C75DA0EE261C766200619991 /* AppDelegate.swift in Sources */,
 				C77E4F77261CD5EA00F945AE /* Note+CoreDataProperties.swift in Sources */,
 				C7FEF668262762960085A825 /* FoldersController.swift in Sources */,
+				C7277B60262ECE760005661B /* FolderController.swift in Sources */,
 				C77E4F7B261CD5EA00F945AE /* Location+CoreDataProperties.swift in Sources */,
 				C77E4F74261CD5EA00F945AE /* Folder+CoreDataClass.swift in Sources */,
 				C77E4F79261CD5EA00F945AE /* ImageNote+CoreDataProperties.swift in Sources */,
