@@ -26,7 +26,7 @@ class FoldersController: UITableViewController {
                 CoreDataManager.sharedInstance.saveContext()
                 self.tableView.reloadData()
             }
-            
+            self.tableView.reloadData()
         }
         let alertActionСancel = UIAlertAction(title: "Сancel", style: UIAlertAction.Style.default) { (alert) in
          }
@@ -35,7 +35,7 @@ class FoldersController: UITableViewController {
         alertAction.addAction(alertActionСancel)
         present(alertAction, animated: true, completion: nil)
         
-        // tableView.reloadData()
+          tableView.reloadData()
     }
     // MARK: - Table view data source
 
@@ -68,7 +68,7 @@ class FoldersController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToFolder" {
             let selectedFolder = folder[tableView.indexPathForSelectedRow!.row]
-            (segue.destination as! FolderController).folder = selectedFolder
+            (segue.destination as! FolderController).folderr = selectedFolder
         }
     }
     /*

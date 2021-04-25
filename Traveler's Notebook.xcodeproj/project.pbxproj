@@ -23,6 +23,7 @@
 		C77E4F7A261CD5EA00F945AE /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4F72261CD5EA00F945AE /* Location+CoreDataClass.swift */; };
 		C77E4F7B261CD5EA00F945AE /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4F73261CD5EA00F945AE /* Location+CoreDataProperties.swift */; };
 		C77E4F8A26241F5600F945AE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77E4F8926241F5600F945AE /* CoreDataManager.swift */; };
+		C7A9A8AE2633238C007CEB69 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A8AD2633238C007CEB69 /* NoteController.swift */; };
 		C7FEF668262762960085A825 /* FoldersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FEF667262762960085A825 /* FoldersController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		C77E4F72261CD5EA00F945AE /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C77E4F73261CD5EA00F945AE /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C77E4F8926241F5600F945AE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C7A9A8AD2633238C007CEB69 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
 		C7FEF667262762960085A825 /* FoldersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 				C75DA0EF261C766200619991 /* SceneDelegate.swift */,
 				C7FEF667262762960085A825 /* FoldersController.swift */,
 				C7277B5F262ECE760005661B /* FolderController.swift */,
+				C7A9A8AD2633238C007CEB69 /* NoteController.swift */,
 				C75DA0F3261C766200619991 /* Main.storyboard */,
 				C75DA0F9261C767600619991 /* Assets.xcassets */,
 				C75DA0FB261C767600619991 /* LaunchScreen.storyboard */,
@@ -182,6 +185,7 @@
 				C77E4F77261CD5EA00F945AE /* Note+CoreDataProperties.swift in Sources */,
 				C7FEF668262762960085A825 /* FoldersController.swift in Sources */,
 				C7277B60262ECE760005661B /* FolderController.swift in Sources */,
+				C7A9A8AE2633238C007CEB69 /* NoteController.swift in Sources */,
 				C77E4F7B261CD5EA00F945AE /* Location+CoreDataProperties.swift in Sources */,
 				C77E4F74261CD5EA00F945AE /* Folder+CoreDataClass.swift in Sources */,
 				C77E4F79261CD5EA00F945AE /* ImageNote+CoreDataProperties.swift in Sources */,

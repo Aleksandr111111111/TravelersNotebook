@@ -12,12 +12,15 @@ import UIKit
 
 @objc(Note)
 public class Note: NSManagedObject {
-    class func newNote(name: String) -> Note {
+    class func newNote(name: String, inFolder: Folder?) -> Note {
         let newNote = Note(context: CoreDataManager.sharedInstance.managedObjecContext)
         
         newNote.name = name
         newNote.dateUpdate = Date()
         
+        //if let inFolder = inFolder {
+        newNote.folder = inFolder
+        //}
         return newNote
     }
     func addImage(image: UIImage) {
