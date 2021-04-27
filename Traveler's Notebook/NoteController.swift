@@ -35,29 +35,47 @@ class NoteController: UITableViewController {
         
         CoreDataManager.sharedInstance.saveContext()
     }
-    
-//    let alertActionNote = UIAlertController(title: "Create new note", message: "Create", preferredStyle: UIAlertController.Style.alert)
-//    alertActionNote.addTextField { (text) in
-//        text.placeholder = "Note name"
-//    }
-//    let alertAcnionAddN = UIAlertAction(title: "Create", style: UIAlertAction.Style.default) { (alert) in
-//        let noteName = alertActionNote.textFields?[0].text
-//        if noteName != nil {
-//            _ = Note.newNote(name: noteName!, inFolder: Folder)
-//            CoreDataManager.sharedInstance.saveContext()
-//            self.tableView.reloadData()
-//        }
-//
-//    }
-//    let alertActionСancel = UIAlertAction(title: "Сancel", style: UIAlertAction.Style.default) { (alert) in
-//     }
-//
-//    alertActionNote.addAction(alertAcnionAddN)
-//    alertActionNote.addAction(alertActionСancel)
-//    present(alertActionNote, animated: true, completion: nil)
- 
-
     // MARK: - Table view data source
+    
+    let imagePiker: UIImagePickerController = UIImagePickerController()
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 && indexPath.section == 0 {
+            
+            let alertContr = UIAlertController(title: "sorse", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+            
+            let alertActionFoto = UIAlertAction(title: "Selected from library", style: UIAlertAction.Style.default, handler: { (alert) in
+                self.imagePiker.sourceType = .savedPhotosAlbum
+                self.imagePiker.delegate = self
+                self.present(self.imagePiker, animated: true, completion: nil)
+                
+            })
+            
+            let alertActionCamera = UIAlertAction(title: "Make a foto", style: UIAlertAction.Style.default, handler: { (alert) in
+                self.imagePiker.sourceType = .camera
+                self.imagePiker.delegate = self
+                self.present(self.imagePiker, animated: true, completion: nil)
+            })
+            
+            if self.imageView.image != nil {
+                let alertActionDelete = UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (alert) in
+                    
+                })
+                alertContr.addAction(alertActionDelete)
+            }
+            
+            let alertActionCancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (alert) in
+            })
+            
+            alertContr.addAction(alertActionFoto)
+            alertContr.addAction(alertActionCamera)
+            alertContr.addAction(alertActionCancel)
+            
+            present(alertContr, animated: true, completion: nil)
+           
+        }
+        
+    }
 
 
 
@@ -117,3 +135,18 @@ class NoteController: UITableViewController {
     */
 
 }
+
+extension NoteController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
