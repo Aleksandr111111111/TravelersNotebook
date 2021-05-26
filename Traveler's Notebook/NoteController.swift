@@ -19,6 +19,7 @@ class NoteController: UITableViewController {
         super.viewDidLoad()
         textName.text = note?.name
         textDescription.text = note?.textDiscription
+        imageView.image = note?.addActualImage
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,6 +33,7 @@ class NoteController: UITableViewController {
         }
         note?.name = textName.text
         note?.textDiscription = textDescription.text
+        note?.addActualImage = imageView.image
         
         CoreDataManager.sharedInstance.saveContext()
     }
@@ -59,7 +61,7 @@ class NoteController: UITableViewController {
             
             if self.imageView.image != nil {
                 let alertActionDelete = UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (alert) in
-                    
+                    self.imageView.image = nil
                 })
                 alertContr.addAction(alertActionDelete)
             }
@@ -72,12 +74,12 @@ class NoteController: UITableViewController {
             alertContr.addAction(alertActionCancel)
             
             present(alertContr, animated: true, completion: nil)
-           
+
         }
         
     }
 
-
+ 
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

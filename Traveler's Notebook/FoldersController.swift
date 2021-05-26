@@ -11,7 +11,7 @@ class FoldersController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+   
     }
 
     @IBAction func peshAddAction(_ sender: UIButton) {
@@ -19,15 +19,16 @@ class FoldersController: UITableViewController {
         alertAction.addTextField { (text) in
             text.placeholder = "Folder name"
         }
+        
         let alertAcnionAdd = UIAlertAction(title: "Create", style: UIAlertAction.Style.default) { (alert) in
             let folderName = alertAction.textFields?[0].text
             if folderName != nil {
-                _ = Folder.newFolder(name: folderName!)
+                _ = Folder.newFolder(name: folderName!.uppercased())
                 CoreDataManager.sharedInstance.saveContext()
                 self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         }
+        
         let alertActionСancel = UIAlertAction(title: "Сancel", style: UIAlertAction.Style.default) { (alert) in
          }
         
@@ -35,7 +36,6 @@ class FoldersController: UITableViewController {
         alertAction.addAction(alertActionСancel)
         present(alertAction, animated: true, completion: nil)
         
-          tableView.reloadData()
     }
     // MARK: - Table view data source
 
@@ -47,6 +47,7 @@ class FoldersController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return folder.count
+    
     }
 
     
@@ -54,11 +55,15 @@ class FoldersController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foldersCell", for: indexPath)
         let folderInCell = folder[indexPath.row]
         cell.textLabel?.text = folderInCell.name
-
+        cell.detailTextLabel?.text = "\(folderInCell.notes!.count) items(-s)"
+       
+       
         // Configure the cell...
 
         return cell
+        
     }
+    
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
